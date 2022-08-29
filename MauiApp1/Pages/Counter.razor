@@ -1,0 +1,38 @@
+﻿@page "/counter"
+
+@using Microsoft.Maui.ApplicationModel
+@using BlazorBarcodeScanner.ZXing.JS
+
+<h1>Counter</h1>
+<h6>@LocalBarcodeText</h6>
+<p role="status">Current count: @currentCount</p>
+
+<BarcodeReader />
+
+
+
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;    
+    private string LocalBarcodeText = " ";    
+
+    protected override async Task OnInitializedAsync()
+    {
+        PermissionStatus status = await Permissions.RequestAsync<Permissions.Camera>();
+        //FileResult photo = await MediaPicker.Default.CapturePhotoAsync();
+    }
+
+    //private void BarcodeTexto(Barcode)
+
+    private void IncrementCount()
+    {
+        currentCount++;        
+    }
+
+
+    
+    
+
+}
